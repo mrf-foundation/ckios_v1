@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
+    <!-- reference your installed Font Awesome Free package's files here -->
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+     <script src="{% static 'bootstrap_javascript_url' %}"></script>
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+      <link href="{% static 'fontawesome_free/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+      <link href="{% static 'fontawesome_free/css/brands.css' %}" rel="stylesheet" type="text/css">
+      <link href="{% static 'fontawesome_free/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <title>{% block bootstrap5_title %}WebPres.org |{{ title }}{% endblock %}</title>
+
+
+
+    {# --- css --- #}
+    {% block extra_css %}{% endblock %}
+
+  </head>
+{% block bootstrap5_content %}
+
+<nav class="navbar navbar-dark bg-dark fixed-top  navbar-dark flex-column flex-md-row bd-navbar" ><!--main navbar-->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'Assets/brand/webpres-logo.png'%} " alt="" width="50" height="50" class="d-inline-block align-text-top">
+    </a>
+
+      <li class="nav navbar-nav me-auto">
+
+        <li class="nav-item">
+        <a class="nav-link text-white" href="/">Home</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="https://docs.webpres.org/">Docs</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="http://forum.webpres.org/">Forums</a>
+      </li>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="/post/">Blog</a>
+      </li>
+
+
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="https://github.com/WebPres-org/v1.0/"><i class="fab fa-github"></i>&nbsp;Fork</a>
+      </li>
+
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="https://buy.stripe.com/7sI3fY9TD5jE3KgdR0"><i class="fas fa-hand-holding-usd"></i>&nbsp;Donate</a>
+      </li>
+
+
+        <ul class="nav justify-content">
+  <li class="nav-item">
+        {% if user.is_authenticated %}
+     <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href='#' id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Welcome {{request.user}}</a>
+    <div class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+    <ul class="nav justify-content-start">
+        <ul><a class="dropdown-item " href="{% url 'Myprofile' %}">My Profile</a></ul>
+        <ul><a class="dropdown-item" href="{% url 'post_create' %}">Create Post</a></ul>
+          <ul><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></ul>
+    </ul>
+      </li>
+{% else %}
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <li class="nav-item">
+    <a class="nav-link text-white btn btn-outline-danger " href="{% url 'login' %}">Login</a>
+  </li>
+      </li>
+      {% endif %}
+
+  </li>
+ </li>
+    </ul>
+      </div>
+    </div>
+    </nav>
+ {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+{% endblock %}
+
+<!--start Body-->
+<body>
+</br>
+</br>
+</br>
+</br>
+</br>
+<main class="container">
+      {% block content %}{% endblock %}
+
+</main>
+    {# --- js --- #}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

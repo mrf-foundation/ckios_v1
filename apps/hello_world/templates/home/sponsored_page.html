@@ -1,0 +1,119 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block head-meta %}
+
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="Sponsor , WebPres.org.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+    {% block content %}
+
+    <!--Products-->
+    <div class="container py-5">
+        <h1 class="font-weight-bold">Sponsor Here</h1>
+         <p class="font-weight-bold">Thanks for being a part of us...!</p>
+        <hr>
+        <br>
+
+        <!------------>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                        <div class="card" style="width: 18rem;">
+                              <img src="{% static 'Assets/uploads/sponsore_logo_200_55.png'%} " alt="" width="200" height="55"" class="img-fluid" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Diamond Plan ($200/y)</h5>
+                          <p class="card-text">payment/yearly</p>
+                        <p class="card-text">format jpg/png/svg</p>
+                          <p class="card-text">Click link to your website</p>
+                          <p class="card-text">Unlimited access to WebPres Diamond.</p>
+                          <p class="card-text">Free support 24/7.</p>
+                        <a href="https://buy.stripe.com/eVa17Q1n7aDYcgM9AJ" class="btn btn-dark">check out</a>
+                            </div>
+
+                            <br>
+                </div>
+                <div class="col"
+                    <div class="card" style="width: 18rem;">
+                      <img src="{% static 'Assets/uploads/donate_pic_56_56.png'%} " alt="" width="56" height="56"" class="img-fluid" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Business Plan ($20/y)</h5>
+                          <p class="card-text">payment/yearly</p>
+                        <p class="card-text">format jpg/png/svg</p>
+                          <p class="card-text">Click link to your profile</p>
+                          <p class="card-text">Unlimited access to WebPres.</p>
+                          <p class="card-text">support unavailable.</p>
+                        <a href="https://buy.stripe.com/cN27weaXH7rMfsYdQU" class="btn btn-dark">check out</a>
+
+                      </div>
+                    </div>
+
+                    <br>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                          <img src="{% static 'Assets/uploads/donate_pic_56_56.png'%} " alt="" width="56" height="56"" class="img-fluid" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Individual ($5/y)</h5>
+                          <p class="card-text">payment/yearly</p>
+                        <p class="card-text">format jpg/png/svg</p>
+                          <p class="card-text">Click link to your profile</p>
+                          <p class="card-text">Unlimited access to WebPres.</p>
+                          <p class="card-text">support unavailable.</p>
+                        <a href="https://buy.stripe.com/9AQ3fY3vf5jEbcIeV0" class="btn btn-dark">check out</a>
+                        </div>
+                        <br>
+
+                        <div class="col"
+                    <div class="card" style="width: 18rem;">
+                      <img src="{% static 'Assets/uploads/sponsore_logo_200_55.png'%} " alt="" width="200" height="55"" class="img-fluid" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Premuim Plan ($50/y)</h5>
+                          <p class="card-text">payment/yearly</p>
+                        <p class="card-text">format jpg/png/svg</p>
+                          <p class="card-text">Click link to your website</p>
+                          <p class="card-text">Unlimited access to WebPres Premuim.</p>
+                          <p class="card-text">Free support 24/7.</p>
+                        <a href="https://buy.stripe.com/28oeYGe9TaDY1C86ov" class="btn btn-dark">check out</a>
+                      </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        <!------------>
+        <div class="row">
+             {% for p in page_obj %}
+                <div class="col-sm-12 col-md-6 col-lg-4 pb-4">
+                    <div class="card h-100" style="border:none">
+                        <img src="{{ p.product_image.url }}" class="card-img-top" alt="{{ p.product_name }}" style="width: auto; height: 200px; object-fit: scale-down;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.product_name }}</h5>
+                            <p class="card-text text-muted" style="font-size:12px">{{ p.product_type }}</p>
+                            <p class="card-text">{{ p.product_description }}</p>
+                            <div class="row">
+                                <div class="col-3 text-center">
+
+                                </div>
+                                <div class="col-4 text-center">
+
+                                </div>
+                                <div class="col-5 text-center">
+                                    <a href="{{ p.affiliate_url }}" class="btn btn-warning">Buy now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!--Pagination-->
+        ...
+        <!--end of Pagination-->
+
+        {% include "legal/copyrights.html" %}
+
+         {% endblock %}

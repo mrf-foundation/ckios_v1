@@ -1,0 +1,14 @@
+<!-- templates/base.html -->
+
+<!-- ... -->
+
+{% if request.user.is_authenticated %}
+<div class="navbar-nav ml-auto">
+  <a href="{% url 'core:post_create' %}"
+    class="nav-item nav-link {% if request.path == '/post/create/' %}active{% endif %}">
+    Create a post
+  </a>
+  <!-- ... -->
+{% endif %}
+
+<!-- ... -->

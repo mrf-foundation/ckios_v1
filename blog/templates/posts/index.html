@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load bootstrap5 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+
+{% block head-meta %}
+
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="WebPres.org , Opensource CMS Site builder.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Webpres site</title>
+    {% block bootstrap5_title %}{% block title %}Hello World | WebPres.org{% endblock %}{% endblock %}
+</head>
+{% block content %}
+
+<div class="alert alert-info" role="alert">
+  Posts Will Dispaly here—check it out!
+</div>
+
+<div class="container">
+  <!-- Content here -->
+
+{% bootstrap_label content %}
+
+   {% for post in object_list %}
+     {{ post }}
+    {{ post.title }}<!-- with lowercase -->
+{% endfor %}
+
+</div>
+{% include "legal/copyrights.html" %}
+{% endblock %}

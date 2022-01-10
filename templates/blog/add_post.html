@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap5 %}
+{% block head-meta %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="Post WebPres Blog , Opensource CMS Site builder.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Webpres site</title>
+    {% block title %}Hello World | WebPres.org{% endblock %}
+</head>
+
+<body>
+{% block content %}
+  <h3>WebPres Today's Post</h3>
+{# Display a form #}
+<form action="/add_post/" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+    {% bootstrap_javascript %}
+  {% buttons %}
+    <button type="submit" class="btn btn-dark">
+      Submit
+    </button>
+  {% endbuttons %}
+</form>
+{% endblock %}
+
+
+</block>
+</body>
